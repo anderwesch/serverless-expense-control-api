@@ -48,6 +48,22 @@ provider:
           - dynamodb:DescribeTable
         Resource: "arn:aws:dynamodb:us-east-1:*:*"
 
+# Create our resources with separate CloudFormation templates
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
+
+cors:
+  origin: '*'
+  headers:
+    - Content-Type
+    - X-Amz-Date
+    - Authorization
+    - X-Api-Key
+    - X-Amz-Security-Token
+    - X-Amz-User-Agent
+  allowCredentials: false
+
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1

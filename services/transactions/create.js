@@ -12,7 +12,7 @@ export const main = handler( async (event, context) => {
       transactionId: uuid.v1(),
       description: data.description,
       amount: data.amount,
-      date: data.date,
+      date: Date.parse(data.date),
       createdAt: Date.now(),
     },
   };
